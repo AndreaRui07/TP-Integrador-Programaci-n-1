@@ -29,8 +29,11 @@ o	Promedio de superficie.
 o	Cantidad de países por continente.
 •	Mostrar catálogo completo.
 •	Persistencia automática en CSV tras cada modificación.
-🖥️ Ejemplo de ejecución
+
+    Ejemplo de ejecución
+  	
 Código
+
 --- MENÚ ---
 1. Agregar país
 2. Actualizar datos de un país
@@ -48,16 +51,21 @@ Población: 45376763
 Superficie: 2780400
 Continente: América
 País agregado.
+
 Ejemplo de estadísticas:
+
 Código
+
 Mayor población: {'nombre': 'Brasil', 'poblacion': 213993437, 'superficie': 8515767, 'continente': 'América'}
 Menor población: {'nombre': 'Uruguay', 'poblacion': 3473727, 'superficie': 176215, 'continente': 'América'}
 Promedio población: 87,345,642
 Promedio superficie: 3,456,789
 Cantidad por continente: {'América': 3, 'Europa': 1}
+
  Integrantes
 •	Andrea Rui
 •	Fernando Weisheim
+
  Aprendizajes
 •	Uso de listas y diccionarios como estructuras principales.
 •	Modularización con funciones.
