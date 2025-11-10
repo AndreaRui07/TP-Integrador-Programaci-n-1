@@ -1,0 +1,128 @@
+Trabajo práctico 
+Programación 1 
+Marco Teórico – Gestión de Países en Python 
+Alumnos: Fernando Weisheim 
+Andrea Rui 
+1. Listas 
+Las listas en Python son estructuras de datos ordenadas y mutables que permiten 
+almacenar múltiples elementos en una sola variable. Se definen con corchetes [] y pueden 
+contener distintos tipos de datos.  
+Aplicación en el proyecto: el catálogo de países se gestiona como una lista de diccionarios, 
+lo que permite recorrer, filtrar y ordenar los registros. 
+Ejemplo: 
+paises_catalogo = [ 
+{"nombre": "Argentina", "poblacion": 45376763, "superficie": 2780400, "continente": 
+"América"}, 
+{"nombre": "Japón", "poblacion": 125800000, "superficie": 377975, "continente": 
+"Asia"} 
+] 
+Esto permite recorrer, filtrar y ordenar países fácilmente. 
+2. Diccionarios 
+Los diccionarios son colecciones de pares clave-valor. Cada clave es única y se utiliza para 
+acceder a su valor asociado.  
+Aplicación en el proyecto: cada país se representa como un diccionario con claves 
+"nombre", "población", "superficie" y "continente". Esto facilita el acceso directo a los 
+datos. 
+Ejemplo: pais["poblacion"] 
+3. Funciones 
+Las funciones son bloques de código reutilizables que realizan una tarea específica. Se 
+definen con def y pueden recibir parámetros y devolver resultados. 
+Aplicación en el proyecto: se modularizó el código en funciones como agregar_pais(), 
+f
+ iltrar_poblacion(), estadisticas(), lo que asegura claridad y reutilización. 
+4. Condicionales 
+Los condicionales (if, elif, else) permiten ejecutar diferentes bloques de código según se 
+cumplan ciertas condiciones. 
+Aplicación en el proyecto: se usan para validar entradas y decidir el flujo del programa. 
+Además, se emplea match/case para gestionar el menú principal. 
+Ejemplo: 
+if poblacion.isdigit() and int(poblacion) > 0: 
+print("Dato válido") 
+else: 
+print("Valor inválido") 
+5. Ordenamientos 
+El ordenamiento es un proceso fundamental en programación que consiste en organizar 
+los elementos de una colección según un criterio determinado, ya sea alfabético, 
+numérico, ascendente o descendente. En Python, este procedimiento puede realizarse 
+mediante los métodos list.sort() o la función sorted(), que permiten definir una función de 
+clave (key) para indicar el atributo por el cual se ordenará la colección. 
+Aplicación en el proyecto:  se aplica sobre la lista de diccionarios que representa el 
+catálogo de países. Cada diccionario contiene los atributos nombre, población, superficie y 
+continente. El sistema permite ordenar los países de acuerdo con distintos criterios, lo que 
+facilita la consulta y el análisis de la información. 
+• Ordenamiento por nombre: organiza los países en orden alfabético, permitiendo 
+una visualización clara y sistemática. 
+• Ordenamiento por población: organiza los países según el número de habitantes, 
+útil para identificar rápidamente los más y menos poblados. 
+• Ordenamiento por superficie: organiza los países según su extensión territorial, en 
+forma ascendente o descendente, lo que permite comparar tamaños relativos. 
+Ejemplo aplicado en el código: 
+def clave_nombre(pais): 
+return pais['nombre'] 
+def clave_poblacion(pais): 
+return pais['poblacion'] 
+def clave_superficie(pais): 
+return pais['superficie'] 
+# Uso en el programa 
+sorted(paises_catalogo, key=clave_nombre)          
+sorted(paises_catalogo, key=clave_poblacion)       
+# Ordenar por nombre 
+# Ordenar por población 
+sorted(paises_catalogo, key=clave_superficie, reverse=True)  # Ordenar por superficie 
+descendente 
+De esta manera, el ordenamiento se convierte en una herramienta esencial para la gestión 
+del catálogo, ya que permite organizar la información de forma flexible y adaptada a las 
+necesidades de consulta del usuario. 
+6. Estadísticas 
+Las estadísticas básicas permiten obtener información resumida de un conjunto de datos 
+(máximos, mínimos, promedios, conteos).  
+Aplicación en el proyecto: 
+• País con mayor y menor población (max, min). 
+• Promedio de población y superficie (sum / len). 
+• Cantidad de países por continente (conteo con diccionario acumulador). 
+Ejemplo: 
+prom_pob = sum(p["poblacion"] for p in paises_catalogo) / len(paises_catalogo) 
+7. Archivos CSV 
+CSV (Comma Separated Values) es un formato de texto plano para almacenar datos 
+tabulares, donde cada línea representa un registro y los valores están separados por 
+comas.  
+Aplicación en el proyecto: se usa el módulo estándar csv para leer y escribir el catálogo. Al 
+iniciar, se carga el archivo paises.csv y cada vez que se modifica el catálogo, se guarda 
+automáticamente. 
+Ejemplo: 
+with open("paises.csv", "w", newline='', encoding="utf-8") as f: 
+writer = csv.DictWriter(f, fieldnames=["nombre","poblacion","superficie","continente"]) 
+writer.writeheader() 
+writer.writerows(paises_catalogo) 
+Conexión con el proyecto 
+Cada concepto teórico se aplica directamente en el código: 
+• Listas y diccionarios → estructura principal del catálogo. 
+• Funciones → modularización del sistema. 
+• Condicionales → validaciones y flujo del menú. 
+• Ordenamientos → consultas ordenadas. 
+• Estadísticas → indicadores clave del dataset. 
+• CSV → persistencia de datos entre ejecuciones.
+Conclusión 
+El desarrollo de este trabajo práctico permitió afianzar conocimientos fundamentales de 
+programación en Python y comprender su aplicación en un proyecto concreto de gestión 
+de datos. A lo largo del proceso se trabajó con listas y diccionarios como estructuras de 
+almacenamiento dinámico, lo que facilitó la organización de la información de los países. 
+Asimismo, se reforzó la importancia de la modularización mediante funciones, que aportó 
+claridad, reutilización y mantenimiento al código. 
+El uso de condicionales resultó esencial para validar entradas y controlar el flujo del 
+programa, mientras que los ordenamientos y las estadísticas brindaron herramientas para 
+analizar la información de manera más eficiente y significativa. La incorporación de 
+archivos CSV permitió comprender la relevancia de la persistencia de datos y la interacción 
+con fuentes externas, acercando el proyecto a un escenario de uso real. 
+En conjunto, este trabajo no solo consolidó aspectos técnicos del lenguaje, sino que 
+también fomentó la atención al detalle, la validación de datos y la anticipación de posibles 
+errores de usuario, competencias clave en el desarrollo de software robusto y accesible. 
+De esta manera, se logró integrar teoría y práctica en una experiencia que refuerza la 
+capacidad de diseñar soluciones informáticas aplicables a problemas concretos. 
+Bibliografía 
+• Python Software Foundation. Python Documentation. Disponible en: 
+https://docs.python.org/3/ 
+• Downey, A. (2015). Think Python: How to Think Like a Computer Scientist. O’Reilly 
+Media. 
+• McKinney, W. (2017). Python for Data Analysis. O’Reilly Media. 
+• UTN – Material de cátedra de Programación 1.
